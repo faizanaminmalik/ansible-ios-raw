@@ -12,5 +12,5 @@
           - show ip int brief
       register: ios_op
 
-     - name: Print the output
-       debug: var=ios_op.stdout_lines
+    - name: Print the output
+      debug: var=ios_op.stdout_lines
