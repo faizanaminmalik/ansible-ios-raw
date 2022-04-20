@@ -11,7 +11,7 @@
   tasks:
     - name: enable ospf on {{ inventory_hostname }}
       ios_config:
-        provider: {{ cli }}
+        provider: "{{ cli }}"
         authorize: yes
         parents: router ospf 1
         lines:
