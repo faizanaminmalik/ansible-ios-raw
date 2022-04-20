@@ -9,4 +9,4 @@
       register: arp_op
 
     - name: Print arp output to stdout
-      debug: var=arp_op.stdout.lines
+      debug: var=arp_op
