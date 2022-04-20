@@ -10,7 +10,7 @@
     ansible_network_os: ios
 
   tasks:
-    - name: enable ospf on {{ inventory_hostname }}
+    - name: enable ospf
       cisco.ios.ios_config:
         provider: "{{ cli }}"
         authorize: yes
