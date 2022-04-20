@@ -1,0 +1,21 @@
+---
+- name: manage gns3 devices
+  hosts: R1
+  gather_facts: false
+  connection: local
+  vars:
+    cli:
+      username: faizan
+      password: cisco
+      transport: cli
+  tasks:
+    - name: enable ospf on {{ inventory_hostname }}
+      ios_config:
+        provider: {{ cli }}
+        authorize: yes
+        parents: router ospf 1
+        lines:
+          - name: network 0.0.0.0 255.255.255.255 area 0
+        register: ospf_op
+
+    - debug: var=ospf_op.stdout_lines
