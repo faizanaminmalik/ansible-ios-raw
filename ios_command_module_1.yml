@@ -1,0 +1,16 @@
+---
+- name: Using ios_command module
+  hosts: all
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Run Multiple commands on remote hosts
+      ios_command:
+        commands:
+          - show version
+          - show ip int brief
+      register: ios_op
+
+     - name: Print the output
+       debug: var=ios_op.stdout_lines
