@@ -7,7 +7,7 @@
     cli:
       username: faizan
       password: cisco
-      transport: cli
+
   tasks:
     - name: enable ospf on {{ inventory_hostname }}
       ios_config:
