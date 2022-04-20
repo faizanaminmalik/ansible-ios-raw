@@ -2,18 +2,15 @@
 - name: manage gns3 devices
   hosts: R1
   gather_facts: false
-  connection: local
+  connection: network_cli
   vars:
-    cli:
-      username: faizan
-      password: cisco
     ansible_network_os: ios
-
+    ansible_become: yes
+    ansible_connection: network_cli
+    ansible_user: faizan
   tasks:
     - name: enable ospf
       cisco.ios.ios_config:
-        provider: "{{ cli }}"
-        authorize: yes
         parents: router ospf 1
         lines:
           - name: network 0.0.0.0 255.255.255.255 area 0
