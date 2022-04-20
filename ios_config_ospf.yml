@@ -16,6 +16,6 @@
         parents: router ospf 1
         lines:
           - name: network 0.0.0.0 255.255.255.255 area 0
-        register: ospf_op
+      register: ospf_op
 
     - debug: var=ospf_op.stdout_lines
