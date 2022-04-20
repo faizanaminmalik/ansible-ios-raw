@@ -15,5 +15,5 @@
 
     - name: Copy to file
       copy:
-        content: "{{ run_op.stdout[0}}"
-        dest: "./output/{{ inventory_hostname}}.txt"
+        content: "{{ run_op.stdout[0] }}"
+        dest: "./output/{{ inventory_hostname }}.txt"
