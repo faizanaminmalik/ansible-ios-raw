@@ -1,0 +1,19 @@
+---
+- name: Run command in IOS and save output to file
+  hosts: all
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: Run commands
+      ios_command:
+        commands:
+          - show version
+      register: run_op
+
+    - name: print output on screen
+      debug: var=run_op.stdout_lines
+
+    - name: Copy to file
+      copy:
+        content: "{{ run_op.stdout[0}}"
+        dest: "./output/{{ inventory_hostname}}.txt"
