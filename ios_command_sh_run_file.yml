@@ -1,0 +1,21 @@
+---
+- name: Run sh run in privellege mode and save to file
+  hosts: all
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Run command
+      ios_command:
+        authorize: yes
+        commands:
+          - show run
+      register: run_op
+
+    - name: print on stdout
+      debug: var=run_op.stdout_lines
+
+    - name: Save config to file
+      copy:
+        content: "{{ run_op.stdout[0] }}"
+        dest: "./output/{{ inventory_hostname }}_runningconf.txt"
